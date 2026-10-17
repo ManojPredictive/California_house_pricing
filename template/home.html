@@ -1,1 +1,77 @@
-<h1>Welcome to my California House Pricing App</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>California House Pricing </title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th,
+        td {
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        input {
+            box-sizing: border-box;
+            padding: 0.4rem;
+            width: 100%;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>California House Pricing Prediction Using Model</h1>
+
+    <form action="{{ url_for('predict') }}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <th scope="row"><label for="MedInc">MedInc</label></th>
+                    <td><input type="number" id="MedInc" name="MedInc" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="HouseAge">HouseAge</label></th>
+                    <td><input type="number" id="HouseAge" name="HouseAge" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="AveRooms">AveRooms</label></th>
+                    <td><input type="number" id="AveRooms" name="AveRooms" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="AveBedrms">AveBedrms</label></th>
+                    <td><input type="number" id="AveBedrms" name="AveBedrms" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="Population">Population</label></th>
+                    <td><input type="number" id="Population" name="Population" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="AveOccup">AveOccup</label></th>
+                    <td><input type="number" id="AveOccup" name="AveOccup" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="Latitude">Latitude</label></th>
+                    <td><input type="number" id="Latitude" name="Latitude" step="any" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="Longitude">Longitude</label></th>
+                    <td><input type="number" id="Longitude" name="Longitude" step="any" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if prediction_text %}
+        <p>{{ prediction_text }}</p>
+    {% endif %}
+</body>
+</html>
